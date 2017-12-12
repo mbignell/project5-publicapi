@@ -1,0 +1,208 @@
+body {
+  background: #f8f8f8;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+  h1 {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #333;
+    font-weight: 100;
+    margin-bottom: 30px;
+  }
+
+  .employees {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 15px;
+    grid-column-gap: 30px;
+    grid-auto-rows: minmax(100px, auto);
+  }
+    @media only screen and (min-width: 700px) {
+      .employees {
+        grid-template-columns: repeat(2, 1fr);
+        grid-row-gap: 25px;
+      }
+    }
+    @media only screen and (min-width: 1000px) {
+      .employees {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+  .employee {
+    border-radius: 4px;
+    border: 1px solid #e7e7e7;
+    background: white;
+    transition: box-shadow 0.5s;
+  }
+
+    .employee:hover {
+      box-shadow: 0px 3px 7px rgba(0,0,7,0.07);
+      cursor: pointer;
+    }
+
+    .employee__photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #f8f8f8;
+      float: left;
+      margin: 30px 20px 30px 30px;
+    }
+
+    .employee__info {
+      margin: 40px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom:-5px;
+      margin-top: 0px;
+      color: #333;
+    }
+
+    p {
+      color: #92a5a8;
+      font-size: 14px;
+      line-height: 1.5em;
+      margin-bottom:0px;
+      margin-top:10px;
+    }
+
+.container--modal {
+  background-color: rgba(0,0,0,0.4);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  display:none;
+  }
+
+  .employee--modal {
+    text-align: center;
+    background: white;
+    width: 95%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 6px;
+    padding: 30px 70px 40px 70px;
+    box-sizing: border-box;
+    position: absolute;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 100px;
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+    display: none;
+  }
+
+    .employee__photo--modal {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: blue;
+      margin: 20px;
+      margin-bottom: 30px;
+    }
+
+    hr {
+      border-color: #7c7d8010;
+      margin-top:20px;
+      margin-bottom:20px;
+    }
+
+    a.close-modal {
+      text-decoration:none;
+      position: absolute;
+      top: 10px;
+      right: 5px;
+      text-decoration: none;
+      border-radius: 0 6px 0 0;
+      width: 40px;
+      line-height: 40px;
+      height: 50px;
+    }
+    a.close-modal img {
+      width: 20px;
+      opacity: 0.3;
+      transition: opacity 0.3s;
+    }
+      a.close-modal:hover img {
+        opacity: 0.8;
+        cursor: pointer;
+      }
+
+    a.left-arrow, a.right-arrow {
+      width: 50px;
+      height: 50px;
+      display:block;
+      position: absolute;
+      top: 220px;
+      left: -32px;
+      background: #f2f4f6;
+      box-shadow: 0px 2px 3px rgba(0,0,0,0.3);
+      color: #7c7d80;
+      text-decoration:none;
+      border-radius: 4px;
+      line-height:1em;
+      transition: all 0.3s;
+      padding: 20px 0 0 0;
+      }
+      a.left-arrow:hover, a.right-arrow:hover {
+        background: #ddd;
+      }
+
+      a.right-arrow {
+        left: auto;
+        right: -32px;
+      }
+
+  .filter {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+    .filter input {
+      padding: 5px 10px;
+    }
+    @media only screen and (max-width: 700px) {
+      .filter {
+        position: relative;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+      .filter input {
+        width: calc(100% - 86px);
+      }
+    }
+
+  .loading {
+    width: 100%;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 600;
+    opacity: 0.1;
+    grid-column-start: span 3;
+    margin-top: 60px;
+  }
+
+.hidden {
+  display: none;
+}

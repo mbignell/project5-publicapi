@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Awesome Employee Directory</title>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Awesome Startup Employee Directory</h1>
+    <div class="filter">
+      Search: <input type="text" onkeyup="filterResults()" id="filter" name="filter_employees">
+    </div>
+    <div class="employees" id="employees">
+      <div class="loading">Loading...</div>
+    </div>
+  </div>
+
+  <div class="container--modal" onclick="closeModal()" id="container--modal">
+  </div>
+  <div class="employee--modal" id="employee--modal">
+  </div>
+
+	<script src="js/app.js"></script>
+</body>
+</html>
