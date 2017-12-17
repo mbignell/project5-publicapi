@@ -60,17 +60,16 @@ function parse(results) {
 // Builds HTML of the employees
 function buildFullHtml() {
   let pageHTML = '';
-  for(let i=0; i < employeeArray.length; i++){
-    let user = employeeArray[i];
-    capitalizeUserElements(employeeArray[i]);
-    let employeeHTML = `<div class="employee" onclick="showEmployee(${i})">` +
+  employeeArray.forEach((user, index) => {
+    capitalizeUserElements(user);
+    let employeeHTML = `<div class="employee" onclick="showEmployee(${index})">` +
      `<img src="${user.picture.large}" class="employee__photo">` +
      `<div class="employee__info">` +
        `<h2 class="employee__name">${user.name.first} ${user.name.last}</h2>` +
        `<p class="employee__email">${user.email}<br/>${user.location.city}</p>` +
      `</div></div>`;
     pageHTML += employeeHTML;
-  };
+  });
   employeesContainer.innerHTML = pageHTML;
 }
 
@@ -111,7 +110,7 @@ function showEmployee(index){
   // Build HTML text
   employeeModalHTML += `<img src="${user.picture.large}" class="employee__photo--modal">` +
     `<h2 class="employee__name">${user.name.first} ${user.name.last}</h2>` +
-    `<p class="employee__email">@${user.login.username}<br/>${user.location.city}</p>` +
+    `<p class="employee__email">@${user.login.username}<br/>${user.email}<br/>${user.location.city}</p>` +
     `<hr>` +
     `<p class="employee__cellnumber">${user.phone}</p>` +
     `<p class="employee__address">${user.location.street}<br/>${user.location.city}, ${user.location.state} ${user.location.postcode}</p>` +
@@ -170,19 +169,19 @@ function filterResults() {
   searchResultNumber = 0;
 
   // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < employeeArray.length; i++) {
-     employeeFirstNames = employeeArray[i].name.first;
-     employeeLastNames = employeeArray[i].name.last;
-     employeeUserNames = employeeArray[i].login.username;
-     if (employeeFirstNames.toLowerCase().indexOf(filter) > -1 || employeeLastNames.toLowerCase().indexOf(filter) > -1 || employeeUserNames.toLowerCase().indexOf(filter) > -1) {
-         employeesList[i].classList.remove("hidden");
-         searchResultsArray.push(employeeArray[i]);
-         employeesList[i].setAttribute("onclick", `showEmployee(${searchResultNumber})`);
-         searchResultNumber += 1;
-     } else {
-         employeesList[i].classList.add("hidden");
-     };
-  };
+  employeeArray.forEach((user, index) => {
+    firstName = user.name.first.toLowerCase();
+    lastName = user.name.last.toLowerCase();
+    username = user.login.username.toLowerCase();
+    if (firstName.indexOf(filter) > -1 || lastName.indexOf(filter) > -1 || username.indexOf(filter) > -1) {
+        employeesList[index].classList.remove("hidden");
+        searchResultsArray.push(user);
+        employeesList[index].setAttribute("onclick", `showEmployee(${searchResultNumber})`);
+        searchResultNumber += 1;
+    } else {
+        employeesList[index].classList.add("hidden");
+    };
+  });
 
   // if there's no results
   if (searchResultNumber === 0) {
